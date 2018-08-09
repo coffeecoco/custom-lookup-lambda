@@ -1,0 +1,124 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: custom lookup function
+Outputs:
+  LambdaArn:
+    Description: ARN of the Lambda Function, which returns the mappings
+    Export:
+      Name: custom-lookup-lambda
+    Value:
+      Fn::GetAtt:
+      - CUSTOMLOOKUP
+      - Arn
+Resources:
+  CUSTOMLOOKUP:
+    Properties:
+      Code:
+        S3Bucket: configstuff
+        S3Key: custom-lookup/codebuild/428b845bebafe3c81c6524d9dee8013a
+      Description: custom lookup function
+      FunctionName: custom-lookup
+      Handler: function.handler
+      MemorySize: 128
+      Role:
+        Fn::GetAtt:
+        - CUSTOMLOOKUPLAMBDAROLE
+        - Arn
+      Runtime: python2.7
+      Timeout: 60
+    Type: AWS::Lambda::Function
+  CUSTOMLOOKUPLAMBDAPOLICY:
+    Properties:
+      PolicyDocument:
+        Statement:
+        - Action:
+          - dynamodb:*
+          Effect: Allow
+          Resource:
+          - arn:aws:dynamodb:*:*:table/custom-lookup
+          - arn:aws:dynamodb:*:*:table/custom-lookup/*
+        - Action:
+          - logs:CreateLogGroup
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          Effect: Allow
+          Resource: arn:aws:logs:*:*:*
+        Version: 2012-10-17
+      PolicyName:
+        Fn::Sub: custom-lookup-lambda-policy-${AWS::Region}
+      Roles:
+      - Ref: CUSTOMLOOKUPLAMBDAROLE
+    Type: AWS::IAM::Policy
+  CUSTOMLOOKUPLAMBDAROLE:
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action:
+          - sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service:
+            - lambda.amazonaws.com
+        Version: 2012-10-17
+      Path: /
+      RoleName:
+        Fn::Sub: custom-lookup-lambda-role-${AWS::Region}
+    Type: AWS::IAM::Role
+  INSERTLOOKUP:
+    Properties:
+      Code:
+        S3Bucket: configstuff
+        S3Key: custom-lookup/codebuild/428b845bebafe3c81c6524d9dee8013a
+      Description: inserts records from codepipeline to dynamodb
+      FunctionName: insert-lookup
+      Handler: dynamodb-sync.handler
+      MemorySize: 128
+      Role:
+        Fn::GetAtt:
+        - INSERTLOOKUPLAMBDAROLE
+        - Arn
+      Runtime: python2.7
+      Timeout: 300
+    Type: AWS::Lambda::Function
+  INSERTLOOKUPLAMBDAPOLICY:
+    Properties:
+      PolicyDocument:
+        Statement:
+        - Action:
+          - dynamodb:*
+          Effect: Allow
+          Resource:
+          - arn:aws:dynamodb:*:*:table/custom-lookup
+          - arn:aws:dynamodb:*:*:table/custom-lookup/*
+        - Action:
+          - codepipeline:PutJobFailureResult
+          - codepipeline:PutJobSuccessResult
+          Effect: Allow
+          Resource:
+          - '*'
+        - Action:
+          - logs:CreateLogGroup
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          Effect: Allow
+          Resource: arn:aws:logs:*:*:*
+        Version: 2012-10-17
+      PolicyName:
+        Fn::Sub: insert-lookup-lambda-policy-${AWS::Region}
+      Roles:
+      - Ref: INSERTLOOKUPLAMBDAROLE
+    Type: AWS::IAM::Policy
+  INSERTLOOKUPLAMBDAROLE:
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action:
+          - sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service:
+            - lambda.amazonaws.com
+        Version: 2012-10-17
+      Path: /
+      RoleName:
+        Fn::Sub: insert-lookup-lambda-role-${AWS::Region}
+    Type: AWS::IAM::Role

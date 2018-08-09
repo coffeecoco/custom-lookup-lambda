@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 echo -n "Enter the S3 Bucket to hold lambda package > "
-read S3Bucket
+#read S3Bucket
+S3Bucket=configstuff
 FILE="$(uuidgen)"
 pip install -r requirements.txt -t "$PWD"
 aws cloudformation package --template-file lambda-cloudformation.yaml --s3-bucket $S3Bucket --s3-prefix custom-lookup/codebuild --output-template-file $FILE

@@ -47,7 +47,8 @@ def insert_update_data(response):
         Item={
             hashkey: {'S': response[hashkey]},
             rangekey: {'S': response[rangekey]},
-            'mappings': {'S': str(response['mappings'])}
+            'mappings': {'S': str(response['mappings'])},
+            'rulesets3': {'S': str(response['rulesets3'])}
         }
     )
 def createtable():

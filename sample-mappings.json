@@ -1,90 +1,106 @@
 [
     {
-        "teamname-environment": "team1-dev",
+        "teamname-environment": "csops",
         "appname": "app1",
+        "rulesets3": {
+                "private": "True",
+                "public": "False"
+            },
         "mappings": {
             "elbsubnet1": "subnet-123456",
             "elbsubnet2": "subnet-234567",
             "appsubnet1": "subnet-345678",
             "appsubnet2": "subnet-456789",
             "vpc": "vpc-123456",
-            "appname":"app1",
-            "costcenter":"123456",
-            "teamname":"team1",
-            "environment":"dev",
-            "certificate":"arn-123456qwertyasdfgh",
-            "compliancetype":"pci",
-            "amiid":"ami-123456",
-            "region":"us-west-1",
-            "publichostedzoneid":"Z234asdf1234asdf",
-            "privatehostedzoneid":"Z345SDFGCVHD123",
-            "hostedzonename":"demo.internal"
+            "appname": "app1",
+            "costcenter": "V_CSOPS",
+            "teamname": "csops",
+            "environment": "dev",
+            "certificate": "arn-123456qwertyasdfgh",
+            "compliancetype": "pci",
+            "amiid": "ami-123456",
+            "region": "ap-southeast-2",
+            "publichostedzoneid": "Z234asdf1234asdf",
+            "privatehostedzoneid": "Z345SDFGCVHD123",
+            "hostedzonename": "demo.internal"
         }
     },
-  {
-        "teamname-environment": "team1-test",
+    {
+        "teamname-environment": "experiment",
         "appname": "app1",
+        "rulesets3": {
+            "private": "True",
+            "public": "False"
+        },
         "mappings": {
             "elbsubnet1": "subnet-123456",
             "elbsubnet2": "subnet-234567",
             "appsubnet1": "subnet-345678",
             "appsubnet2": "subnet-456789",
             "vpc": "vpc-123456",
-            "appname":"app1",
-            "costcenter":"123456",
-            "teamname":"team1",
-            "environment":"dev",
-            "certificate":"arn-123456qwertyasdfgh",
-            "compliancetype":"pci",
-            "amiid":"ami-123456",
-            "region":"us-west-1",
-            "publichostedzoneid":"Z234asdf1234asdf",
-            "privatehostedzoneid":"Z345SDFGCVHD123",
-            "hostedzonename":"demo.internal"
+            "appname": "app1",
+            "costcenter": "V_EXP",
+            "teamname": "experiment",
+            "environment": "nonprod-pilot",
+            "certificate": "arn-123456qwertyasdfgh",
+            "compliancetype": "pci",
+            "amiid": "ami-123456",
+            "region": "ap-southeast-2",
+            "publichostedzoneid": "Z234asdf1234asdf",
+            "privatehostedzoneid": "Z345SDFGCVHD123",
+            "hostedzonename": "nonprod-pilot.internal"
         }
     },
-  {
-        "teamname-environment": "team1-prod",
+    {
+        "teamname-environment": "ndcnonprod",
         "appname": "app1",
+        "rulesets3": {
+                "private": "True",
+                "public": "False"
+            },
         "mappings": {
             "elbsubnet1": "subnet-123456",
             "elbsubnet2": "subnet-234567",
             "appsubnet1": "subnet-345678",
             "appsubnet2": "subnet-456789",
             "vpc": "vpc-123456",
-            "appname":"app1",
-            "costcenter":"123456",
-            "teamname":"team1",
-            "environment":"dev",
-            "certificate":"arn-123456qwertyasdfgh",
-            "compliancetype":"pci",
-            "amiid":"ami-123456",
-            "region":"us-west-1",
-            "publichostedzoneid":"Z234asdf1234asdf",
-            "privatehostedzoneid":"Z345SDFGCVHD123",
-            "hostedzonename":"demo.internal"
+            "appname": "app1",
+            "costcenter": "V_NDC",
+            "teamname": "V_NDC",
+            "environment": "nonprod-pilot",
+            "certificate": "arn-123456qwertyasdfgh",
+            "compliancetype": "pci",
+            "amiid": "ami-123456",
+            "region": "ap-southeast-2",
+            "publichostedzoneid": "Z234asdf1234asdf",
+            "privatehostedzoneid": "Z345SDFGCVHD123",
+            "hostedzonename": "nonprod-pilot.internal"
         }
     },
-  {
-        "teamname-environment": "team1-perf",
+    {
+        "teamname-environment": "ndcprod",
         "appname": "app1",
+        "rulesets3": {
+                "private": "True",
+                "public": "False"
+            },
         "mappings": {
             "elbsubnet1": "subnet-123456",
             "elbsubnet2": "subnet-234567",
             "appsubnet1": "subnet-345678",
             "appsubnet2": "subnet-456789",
             "vpc": "vpc-123456",
-            "appname":"app1",
-            "costcenter":"123456",
-            "teamname":"team1",
-            "environment":"dev",
-            "certificate":"arn-123456qwertyasdfgh",
-            "compliancetype":"pci",
-            "amiid":"ami-123456",
-            "region":"us-west-1",
-            "publichostedzoneid":"Z234asdf1234asdf",
-            "privatehostedzoneid":"Z345SDFGCVHD123",
-            "hostedzonename":"demo.internal"
+            "appname": "app1",
+            "costcenter": "V_NDC",
+            "teamname": "ndcprod",
+            "environment": "prod",
+            "certificate": "arn-123456qwertyasdfgh",
+            "compliancetype": "pci",
+            "amiid": "ami-123456",
+            "region": "ap-southeast-2",
+            "publichostedzoneid": "Z234asdf1234asdf",
+            "privatehostedzoneid": "Z345SDFGCVHD123",
+            "hostedzonename": "ndcnonprod.internal"
         }
     }
 ]

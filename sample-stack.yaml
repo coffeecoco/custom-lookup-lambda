@@ -11,14 +11,10 @@ Resources:
     Type: Custom::Lookup
     Properties:
       ServiceToken: !ImportValue custom-lookup-lambda
-      teamname-environment: team1-dev
+      teamname-environment: ndcnonprod
       appname: app1
 Outputs:
-  AMIID:
-    Value: !GetAtt CUSTOMLOOKUP.amiid
-  VPC:
-    Value: !GetAtt CUSTOMLOOKUP.vpc
-  COSTCENTER:
-    Value: !GetAtt CUSTOMLOOKUP.costcenter
-  PrivateHostedZoneID:
-    Value: !GetAtt CUSTOMLOOKUP.privatehostedzoneid
+  rulesetprivate:
+    Value: !GetAtt CUSTOMLOOKUP.private
+  rulesetpublic:
+    Value: !GetAtt CUSTOMLOOKUP.public

@@ -47,14 +47,17 @@ def handler(event, context):
 
 
 def insert_data(response):
+    print(response)
     createtable()
     dynamodb_client.put_item(
         TableName=tablename,
         Item={
             hashkey: {'S': response[hashkey]},
             rangekey: {'S': response[rangekey]},
-            'mappings': {'S': str(response['mappings'])}
-        }
+            'mappings': {'S': str(response['mappings'])},
+            'rulesets3': {'S': str(response['rulesets3'])}
+
+    }
     )
 
 
@@ -73,10 +76,11 @@ def get_data(event):
     )
     for item in response['Items']:
         objkeypair = ast.literal_eval(item['mappings'])
+        objkeypair2 = ast.literal_eval(item['rulesets3'])
         if 'lookup' in event:
-            return objkeypair[event['lookup']]
+            return objkeypair2[event['lookup']]
         else:
-            return objkeypair
+            return objkeypair2
 
 
 def respond_cloudformation(event, status, data=None):
