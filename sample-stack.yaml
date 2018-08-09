@@ -14,7 +14,19 @@ Resources:
       teamname-environment: ndcnonprod
       appname: app1
 Outputs:
-  rulesetprivate:
-    Value: !GetAtt CUSTOMLOOKUP.private
-  rulesetpublic:
-    Value: !GetAtt CUSTOMLOOKUP.public
+  AMIID:
+    Value: !GetAtt CUSTOMLOOKUP.amiid
+  VPC:
+    Value: !GetAtt CUSTOMLOOKUP.vpc
+  COSTCENTER:
+    Value: !GetAtt CUSTOMLOOKUP.costcenter
+  PrivateHostedZoneID:
+    Value: !GetAtt CUSTOMLOOKUP.privatehostedzoneid
+  rulesets3:
+    Value: !GetAtt CUSTOMLOOKUP.ruleset-s3
+  rulesetec2:
+    Value: !GetAtt CUSTOMLOOKUP.ruleset-ec2
+  rulesetdynamodb:
+    Value: !GetAtt CUSTOMLOOKUP.ruleset-dynamodb
+  rulesetvpc:
+    Value: !GetAtt CUSTOMLOOKUP.ruleset-vpc
