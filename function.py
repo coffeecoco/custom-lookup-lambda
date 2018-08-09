@@ -75,7 +75,6 @@ def get_data(event):
     for item in response['Items']:
         for mappings in item['mappings']:
             objkeypair = ast.literal_eval(item['mappings'])
-            objkeypair2 = ast.literal_eval(mappings['rulesets3'])
             if 'lookup' in event:
                 return objkeypair2[event['lookup']]
             else:
