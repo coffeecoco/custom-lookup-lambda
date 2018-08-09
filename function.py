@@ -76,9 +76,9 @@ def get_data(event):
         for mappings in item['mappings']:
             objkeypair = ast.literal_eval(item['mappings'])
             if 'lookup' in event:
-                return objkeypair2[event['lookup']]
+                return objkeypair[event['lookup']]
             else:
-                return objkeypair2
+                return objkeypair
 
 
 def respond_cloudformation(event, status, data=None):
