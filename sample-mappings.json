@@ -7,6 +7,10 @@
                 "public": "False"
             },
         "mappings": {
+            "ruleset-s3": "True",
+            "ruleset-ec2": "True",
+            "ruleset-dynamodb": "True",
+            "ruleset-vpc": "True",
             "elbsubnet1": "subnet-123456",
             "elbsubnet2": "subnet-234567",
             "appsubnet1": "subnet-345678",
@@ -33,6 +37,10 @@
             "public": "False"
         },
         "mappings": {
+            "ruleset-s3": "True",
+            "ruleset-ec2": "True",
+            "ruleset-dynamodb": "True",
+            "ruleset-vpc": "True",
             "elbsubnet1": "subnet-123456",
             "elbsubnet2": "subnet-234567",
             "appsubnet1": "subnet-345678",
@@ -59,6 +67,10 @@
                 "public": "False"
             },
         "mappings": {
+            "ruleset-s3": "True",
+            "ruleset-ec2": "True",
+            "ruleset-dynamodb": "True",
+            "ruleset-vpc": "True",
             "elbsubnet1": "subnet-123456",
             "elbsubnet2": "subnet-234567",
             "appsubnet1": "subnet-345678",
@@ -85,6 +97,10 @@
                 "public": "False"
             },
         "mappings": {
+            "ruleset-s3": "True",
+            "ruleset-ec2": "True",
+            "ruleset-dynamodb": "True",
+            "ruleset-vpc": "True",
             "elbsubnet1": "subnet-123456",
             "elbsubnet2": "subnet-234567",
             "appsubnet1": "subnet-345678",
